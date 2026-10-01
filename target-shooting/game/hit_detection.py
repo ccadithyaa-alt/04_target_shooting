@@ -9,7 +9,8 @@ def check_hit(targets, click_pos):
     every target.
     """
     for target in targets:
-        rect = target.get_bounding_rect()
-        if rect.collidepoint(click_pos):
+        dx = click_pos[0] - target.x
+        dy = click_pos[1] - target.y
+        if dx * dx + dy * dy <= target.radius * target.radius:
             return target
     return None
